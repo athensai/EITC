@@ -23,8 +23,6 @@ eitc = Pinecone.from_existing_index(index_name=index_name, embedding=embeddings)
 
 @st.cache_data
 def chat(content, messages=[], model="gpt-3.5-turbo", max_tokens=None, role="user") -> str:
-    if len(content) > 1000:
-        content = content[:1000]
     if len(messages) > 4:
         messages[-3:]
     openai.api_key = st.secrets["OPENAI_API_KEY"]
@@ -91,7 +89,7 @@ if 'past' not in st.session_state:
 if 'messages' not in st.session_state:
     st.session_state['messages'] = [
         {"role": "system", "content": f"""You are a chatbot designed to help understand the Earned "
-                                      "Income Tax Credit (EITC) in {language} language with SIMPLE language"
+                                      "Income Tax Credit (EITC) in {language} language. Explain like I'm 10, in detail. Include examples."
                                       "If you are not sure, just say so. If the"
                                       "context is not helpful, proceed normally. ONLY SPEAK IN {language}"""}
     ]
