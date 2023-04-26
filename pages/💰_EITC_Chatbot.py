@@ -43,14 +43,16 @@ def chat(content, messages=[], model="gpt-3.5-turbo", max_tokens=None, role="use
 
 # reset everything
 def clear():
-    st.session_state['generated'] = []
-    st.session_state['generated_bool'] = False
-    st.session_state['past'] = []
+    if 'generated' in st.session_state:
+        del st.session_state['generated']
+    if 'generated_bool' in st.session_state:
+        del st.session_state['generated_bool']
+    if 'past' in st.session_state:
+        del st.session_state['past']
     if 'messages' in st.session_state:
         del st.session_state['messages']
 
-
-# generate a response
+        # generate a response
 @st.cache_data
 def generate_response(prompt):
 
@@ -118,5 +120,5 @@ with container:
 if st.session_state['generated_bool']:
     with response_container:
         for i in range(len(st.session_state['generated'])):
-            message(st.session_state["past"][i], is_user=True, key=f"{i}_user")
-            message(st.session_state["generated"][i], key=f"{i}_response")
+            message(st.session_state["past"][i], is_user=True, key=str(i) + '_user')
+            message(st.session_state["generated"][i], key=str(i))
