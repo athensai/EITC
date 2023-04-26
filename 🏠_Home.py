@@ -3,7 +3,6 @@ import streamlit.components.v1 as components
 
 st.set_page_config(
     page_title="Athens AI",
-    page_icon=":dart:",
     layout="wide",
     initial_sidebar_state="expanded",
 )
