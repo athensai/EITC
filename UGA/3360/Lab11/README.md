@@ -1,2 +1,0 @@
-Suhan Kacholia (811-298-130)
-This is a decision tree for the Iris dataset. I first prepare the data and split into training and test sets. Then I keep the same classes and methods from the tutorial, and apply it to this data.
