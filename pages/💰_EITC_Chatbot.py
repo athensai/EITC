@@ -22,7 +22,7 @@ embeddings = OpenAIEmbeddings()
 eitc = Pinecone.from_existing_index(index_name=index_name, embedding=embeddings)
 
 @st.cache_data
-def chat(content, messages=[], model="gpt-3.5-turbo", max_tokens=None, role="user") -> str:
+def chat(content, messages=[], model="gpt-4", max_tokens=None, role="user") -> str:
     if len(messages) > 4:
         messages[-3:]
     openai.api_key = st.secrets["OPENAI_API_KEY"]
@@ -88,10 +88,10 @@ if 'past' not in st.session_state:
     st.session_state['past'] = []
 if 'messages' not in st.session_state:
     st.session_state['messages'] = [
-        {"role": "system", "content": f"""You are a chatbot designed to help understand the Earned "
-                                      "Income Tax Credit (EITC) in {language} language. Explain like I'm 10, in detail. Include examples."
+        {"role": "system", "content": f"""You are a friendly, cheery chatbot designed to help understand the Earned "
+                                      "Income Tax Credit (EITC) in {language} language. Explain like I'm 10, simple BUT WITH DETAIL. Include examples if helpful."
                                       "If you are not sure, just say so. If the"
-                                      "context is not helpful, proceed normally. ONLY SPEAK IN {language}"""}
+                                      "context is not helpful, proceed normally. ONLY SPEAK IN {language}. USE MARKDOWN FORMAT, with bullet points, new lines, etc."""}
     ]
     output = chat("Introduce yourself, and tell me 3 suggested questions.", messages=st.session_state['messages'])
     st.session_state['generated'].append(output)
