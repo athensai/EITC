@@ -9,8 +9,6 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.prompts.prompt import PromptTemplate
 from streamlit_extras.app_logo import add_logo
 
-add_logo("athensai.png", height=300)
-
 st.set_page_config(page_title="EITC Chatbot", page_icon=":robot_face:")
 
 pinecone.init(
