@@ -1,0 +1,15 @@
+openai
+streamlit
+langchain
+matplotlib
+tiktoken
+seaborn
+datetime
+plotly
+plotly.express
+scipi
+numpy
+pandas
+pinecone-client
+streamlit_chat
+streamlit_extras
