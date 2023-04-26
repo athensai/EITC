@@ -71,7 +71,7 @@ def generate_response(prompt):
     return response
 st.sidebar.title("Language")
 
-language = st.sidebar.radio("Choose a language:", ("English", "Spanish", "Sgaw", "Eastern Pwo", "Western Pwo"), on_change=clear())
+language = st.sidebar.radio("Choose a language:", ("English", "Español", "ကညီကျိာ်", "အရှေ့ပိုးကရင်", "ဖျိ"), on_change=clear())
 
 # Read DB
 # Sidebar - let user choose model and let user clear the current conversation
