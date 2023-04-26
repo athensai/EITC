@@ -61,7 +61,7 @@ def generate_response(prompt):
 
     QA_PROMPT = PromptTemplate(template=template, input_variables=["question", "context"])
 
-    qa = ChatVectorDBChain.from_llm(ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo"), eitc,
+    qa = ChatVectorDBChain.from_llm(ChatOpenAI(temperature=0, model_name="gpt-4"), eitc,
                                     return_source_documents=False, qa_prompt=QA_PROMPT)
 
     prompt += "After answering, include 3 suggested follow-up questions."
