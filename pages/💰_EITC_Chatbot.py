@@ -57,7 +57,7 @@ def generate_response(prompt):
     template = "You are an AI assistant for answering questions about the Earned Income Tax Credit in " + language +  """You are 
     Provide a SIMPLE, UNDERSTANDABLE answer, but be DETAILED. Explain like I'm 10. If you don't know the answer, just say "Hmm, I'm not sure." 
     Don't try to make up an answer. If the question is not about the EITC, politely inform them that you are tuned to only 
-    answer questions about the EITC. Use Markdown to format it well (bullet points, line breaks, bolding, etc.) Suggest 3 additional questions. Question: {question} ========= {context} ========= MARKDOWN: """
+    answer questions about the EITC. USE MARKO to format it well (bullet points, line breaks, bolding, etc.) Suggest 3 additional questions. Question: {question} ========= {context} ========= MARKDOWN: """
 
     QA_PROMPT = PromptTemplate(template=template, input_variables=["question", "context"])
 
