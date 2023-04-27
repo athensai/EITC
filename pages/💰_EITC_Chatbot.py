@@ -22,7 +22,7 @@ embeddings = OpenAIEmbeddings()
 eitc = Pinecone.from_existing_index(index_name=index_name, embedding=embeddings)
 
 @st.cache_data
-def chat(content, messages=[], model="gpt-4", max_tokens=None, role="user") -> str:
+def chat(content, messages=[], model="gpt-3.5-turbo", max_tokens=None, role="user") -> str:
     if len(messages) > 4:
         messages[-3:]
     openai.api_key = st.secrets["OPENAI_API_KEY"]
@@ -61,7 +61,7 @@ def generate_response(prompt):
 
     QA_PROMPT = PromptTemplate(template=template, input_variables=["question", "context"])
 
-    qa = ChatVectorDBChain.from_llm(ChatOpenAI(temperature=0, model_name="gpt-4"), eitc,
+    qa = ChatVectorDBChain.from_llm(ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo"), eitc,
                                     return_source_documents=False, qa_prompt=QA_PROMPT)
 
     prompt += "After answering, include 3 suggested follow-up questions."
